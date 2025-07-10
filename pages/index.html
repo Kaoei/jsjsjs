@@ -1,0 +1,125 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CPS - JUICE</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body id="pageBody" class="bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 min-h-screen overflow-hidden">
+
+
+  <!-- Navigation -->
+  <nav class="relative z-10 flex justify-between items-center px-6 py-4">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
+        <i class="fa-solid fa-bars text-white"></i>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <button class="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium hover:bg-white/30 transition-colors">Product</button>
+      <button class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors">
+        <i class="fa-solid fa-search"></i>
+      </button>
+      <button class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="relative z-10 flex items-center justify-between px-6 py-8 min-h-[calc(100vh-100px)]">
+    
+    <!-- Left Content -->
+    <div class="flex-1 max-w-md">
+      <div class="mb-8">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">
+          Sip into<br>
+          <span class="text-white/90">Freshness</span>
+        </h1>
+        <p class="text-white/80 text-sm mb-6">500ml</p>
+      </div>
+
+      <div class="mb-8">
+        <p class="text-white/80 text-sm leading-relaxed max-w-sm">
+          Discover a burst of natural flavor with our premium selection of fresh juices. Each bottle contains essential nutrients to energize your day.
+        </p>
+      </div>
+
+      <!-- Size Selection -->
+     <div class="flex items-center gap-3 mb-8">
+    <button data-size="true" class="w-12 h-12 bg-white rounded-full font-medium text-sm hover:bg-white/90 transition-colors shadow-lg">500ml</button>
+    <button data-size="true" class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full text-white font-medium text-sm hover:bg-white/30 transition-colors">250ml</button>
+    <button data-size="true" class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full text-white font-medium text-sm hover:bg-white/30 transition-colors">100ml</button>
+    </div>
+
+
+      <button id="buyNowBtn" class="px-6 py-3 bg-white rounded-full text-blue-600 font-medium hover:bg-white/90 transition-colors shadow-lg">Buy Now</button>
+    </div>
+
+    <!-- Center Product Image -->
+    <div class="flex-1 flex items-center justify-center relative">
+      <div class="relative">
+        <div class="absolute inset-0 bg-white/20 rounded-full blur-3xl transform scale-110"></div>
+
+        <!-- Carousel Container -->
+        <div class="relative w-[100vh] h-[90vh] overflow-hidden cursor-grab active:cursor-grabbing" id="carouselContainer">
+          <div id="productCarousel" class="relative w-full h-full flex flex-col items-center justify-center transition-transform duration-700 ease-in-out">
+
+            <!-- Slide 1 (visible by default) -->
+            <div class="product-slide transition-opacity duration-500 absolute w-full h-full flex items-center justify-center opacity-100 z-[10]">
+              <img src="../assets/1.png" alt="Fresh Juice 1" class="object-contain -rotate-12 transition-transform duration-500" />
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="product-slide transition-opacity duration-500 absolute w-full h-full flex items-center justify-center opacity-0 pointer-events-none z-[1]">
+              <img src="../assets/2.png" alt="Fresh Juice 2" class="object-contain -rotate-12 transition-transform duration-500" />
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="product-slide transition-opacity duration-500 absolute w-full h-full flex items-center justify-center opacity-0 pointer-events-none z-[1]">
+              <img src="../assets/3.png" alt="Fresh Juice 3" class="object-contain -rotate-12 transition-transform duration-500" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Content -->
+    <div class="flex-1 flex flex-col items-end max-w-md">
+      <div class="flex items-center gap-24">
+        <div class="text-right mb-8">
+          <div class="mb-8 text-right">
+            <h2 id="productPrice" class="text-5xl font-bold text-white mb-2">Rp 10.000</h2>
+          </div>
+          <p id="productFlavor" class="text-white/80 text-sm mb-2">Orange Burst</p>
+          <div class="flex items-center gap-2 justify-end">
+            <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"><i class="fa-solid fa-heart text-white text-sm"></i></div>
+            <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"><i class="fa-solid fa-share text-white text-sm"></i></div>
+            <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"><i class="fa-solid fa-star text-white text-sm"></i></div>
+          </div>
+        </div>
+
+        <!-- Dots -->
+        <div class="flex flex-col gap-2" id="dotNav">
+          <div class="w-3 h-3 bg-white rounded-full cursor-pointer transition-all duration-300 hover:scale-125" data-index="0"></div>
+          <div class="w-3 h-3 bg-white/50 rounded-full cursor-pointer transition-all duration-300 hover:scale-125" data-index="1"></div>
+          <div class="w-3 h-3 bg-white/50 rounded-full cursor-pointer transition-all duration-300 hover:scale-125" data-index="2"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+<script src="../js/script.js"></script>
+
+
+</body>
+</html>
